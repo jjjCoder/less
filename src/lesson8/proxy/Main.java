@@ -13,7 +13,9 @@ interface LabelsDao{//так в sprinf через proxy.
 public class Main {
     public static void main(String[] args) {
         Labels ruLabels = getLabels("ru");
-        System.out.println(ruLabels);
+        System.out.println(ruLabels.username());
+        System.out.println(ruLabels.getMyMoneyBro("Ivan"));
+
     }
     private static Labels getLabels(String language){
         return (Labels) Proxy.newProxyInstance(Main.class.getClassLoader(), new Class<?>[] {Labels.class}, new LabelsInvocationHandler(language));
@@ -24,5 +26,11 @@ interface Labels{
         @Language(language="ru", value="Логин"),
         @Language(language="en", value="Login")
     })
-    int username();
+    String username();
+
+    @Key({
+        @Language(language = "ru", value = "Где деньги"),
+        @Language(language = "en", value = "where")
+    })
+    String getMyMoneyBro(String bro);
 }
