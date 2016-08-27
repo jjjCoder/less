@@ -80,7 +80,15 @@ class Truck {
                 '}';
     }
 }
+/*
+<person name 'ivan' phone '123'>
+    <children>
+        <person name='Maria' phone='12'/>
+        <person name='Maria' phone='12'/>
+    </children>
+</person>
 
+*/
 @Element(name="person")
 class Person{
     @Arrribute("name")
