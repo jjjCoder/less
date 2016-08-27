@@ -20,6 +20,9 @@ public class Application {
     }
 
     void viewTruckRegistry() {
+        for (Long truckId : truckRegistry.keySet()) {
+            System.out.println(truckId);
+        }
         System.out.println(truckRegistry);
     }
 
@@ -30,7 +33,10 @@ public class Application {
         }
         return truck;
     }
-    public Truck getTruckByType(){return null;}
+
+    public Truck getTruckByType() {
+        return null;
+    }
 
     public static void main(String[] args) {
         if (args.length == 0) {

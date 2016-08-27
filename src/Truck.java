@@ -17,4 +17,11 @@ public class Truck {
     public int getCapacity() {
         return capacity;
     }
+
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "id=" + id +
+                '}';
+    }
 }
