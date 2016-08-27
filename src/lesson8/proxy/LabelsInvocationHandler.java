@@ -17,12 +17,26 @@ public class LabelsInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Key annotationKey = method.getAnnotation(Key.class);
-        Language[] languages=annotationKey.value();
-        for(Language language:languages){
-            if(language.language().equals(this.language)){
-                return language.value();
+        Language[] languages = annotationKey.value();
+
+            for (Language language : languages) {
+                if (language.language().equals(this.language)) {
+                    String messageFormat=language.value();
+                    if(args!=null){
+                        //доработать
+                        messageFormat=applyArguments(args, messageFormat);
+                    }
+                    return messageFormat;
+                }
             }
-        }
+
         return ""+method.getName();
+    }
+
+    private String applyArguments(Object[] args, String messageFormat) {
+        for(int argIndex=0; argIndex<args.length; argIndex++){
+            messageFormat=messageFormat.replaceAll("\\$"+argIndex, String.valueOf(args[argIndex]));
+        }
+        return messageFormat;
     }
 }
