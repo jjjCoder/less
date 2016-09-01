@@ -29,7 +29,7 @@ interface Labels{
     String username();
 
     @Key({
-        @Language(language = "ru", value = "Где деньги"),
+        @Language(language = "ru", value = "Где деньги, $0: $1"),
         @Language(language = "en", value = "where")
     })
     String getMyMoneyBro(String bro);
